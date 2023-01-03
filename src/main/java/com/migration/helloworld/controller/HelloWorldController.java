@@ -24,6 +24,7 @@ public class HelloWorldController {
 	public String welcome()
 	{
 		log.info("Welcome!!");
+		log.info("Reading from Environment Variable: " + System.getenv("mypwd"));
 		return "Welcome!!";
 	}
 }

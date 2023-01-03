@@ -14,14 +14,20 @@ spec:
     spec:
       containers:
       - name: helloworld
-        image: rakeshagrawal1502/helloworld:1.1
+        image: rakeshagrawal1502/helloworld:1.2
         ports:
         - containerPort: 8083
         volumeMounts:
         - name: secrets-store01-inline
           mountPath: "/mnt/secrets-store"
           readOnly: true
-
+        env:
+        - name: mypwd
+          valueFrom:
+            secretKeyRef:
+              name: cregsecrets
+              key: mypwd
+              
       volumes:
       - name: secrets-store01-inline
         csi:
