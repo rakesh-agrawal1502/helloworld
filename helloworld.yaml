@@ -17,6 +17,18 @@ spec:
         image: rakeshagrawal1502/helloworld:1.1
         ports:
         - containerPort: 8083
+        volumeMounts:
+        - name: secrets-store01-inline
+          mountPath: "/mnt/secrets-store"
+          readOnly: true
+
+      volumes:
+      - name: secrets-store01-inline
+        csi:
+          driver: secrets-store.csi.k8s.io
+          readOnly: true
+          volumeAttributes:
+            secretProviderClass: azure-kvname-system-msi
 ---
 apiVersion: v1
 kind: Service
