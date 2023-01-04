@@ -7,8 +7,13 @@ metadata:
     nginx.ingress.kubernetes.io/use-regex: "true"
 spec:
   ingressClassName: nginx
+  tls:
+  - hosts:
+    - creg.d8984ba721684e2da4ac.southeastasia.aksapp.io
+    secretName: cregcert
   rules:
-  - http:
+  - host: creg.d8984ba721684e2da4ac.southeastasia.aksapp.io
+    http:
       paths:
       - path: /hello
         pathType: Prefix

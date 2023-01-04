@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: helloworld
-        image: rakeshagrawal1502/helloworld:1.2
+        image: rakeshagrawal1502/helloworld:1.3
         ports:
         - containerPort: 8083
         volumeMounts:
@@ -27,6 +27,11 @@ spec:
             secretKeyRef:
               name: cregsecrets
               key: mypwd
+        - name: truststorepwd
+          valueFrom:
+            secretKeyRef:
+              name: cregsecrets
+              key: truststorepwd
               
       volumes:
       - name: secrets-store01-inline
