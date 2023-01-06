@@ -29,6 +29,13 @@ spec:
             name: reports
             port:
               number: 8082
+      - path: /audit
+        pathType: Prefix
+        backend:
+          service:
+            name: reports
+            port:
+              number: 8082
       - path: /(.*)
         pathType: Prefix
         backend:
